@@ -3,6 +3,7 @@ package com.example.Register.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -20,15 +21,14 @@ public class Client {
     private String name;
 
     // não obrigatório
-    @Size(min = 0, max = 10)
+    @Size(min = 0, max = 255)
     @Column(name = "fictitious", nullable = true, unique = false)
     private String fictitious;
 
-    @NotBlank
-    @Size(min = 1)
+    @NotNull
+
     @Column(name = "code", nullable = false, unique = true)
     private Long code;
-
 
     public Client() {
     }
@@ -56,19 +56,19 @@ public class Client {
         this.name = name;
     }
 
-    public @Size(min = 0, max = 10) String getFictitious() {
+    public @Size(min = 0, max = 255) String getFictitious() {
         return fictitious;
     }
 
-    public void setFictitious(@Size(min = 0, max = 10) String fictitious) {
+    public void setFictitious(@Size(min = 0, max = 255) String fictitious) {
         this.fictitious = fictitious;
     }
 
-    public @NotBlank @Size(min = 1) Long getCode() {
+    public @NotNull  Long getCode() {
         return code;
     }
 
-    public void setCode(@NotBlank @Size(min = 1) Long code) {
+    public void setCode(@NotNull Long code) {
         this.code = code;
     }
 }
